@@ -6,6 +6,8 @@ const navigation = [
   { name: 'Skills', href: '#', current: false },
   { name: 'Projects', href: '#', current: false },
   { name: 'Experience', href: '#', current: false },
+    { name: 'Contact', href: '#', current: false },
+
 ]
 
 function classNames(...classes) {
@@ -16,7 +18,7 @@ export default function Example() {
   return (
     <Disclosure
       as="nav"
-      className="relative bg-gray-800/50 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10"
+      className="relative  after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px "
     >
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
