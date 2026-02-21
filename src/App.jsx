@@ -1,13 +1,13 @@
 
 import './App.css'
-
+import HeroSecation from './Component/HeroSecation'
+import Navbar from './Component/Navbar'
 function App() {
 
   return (
     <>
-       <div className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-4xl p-10 rounded-2xl shadow-2xl">
-  جاهزين نبني بقا 😎
-</div>
+     <Navbar />
+     <HeroSecation/>
     </>
   )
 }
