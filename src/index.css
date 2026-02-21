@@ -11,3 +11,6 @@
   background-color: #000000;
 }
 
+html {
+  scroll-behavior: smooth;
+}
