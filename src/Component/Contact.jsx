@@ -57,7 +57,7 @@ const Contact = () => {
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
         
-        {/* Left Side */}
+   
         <div className="space-y-6">
           <h5 className="text-[#facc15] font-semibold text-lg">Get In Touch</h5>
           <h2 className="text-4xl font-bold">Let's Work Together</h2>
