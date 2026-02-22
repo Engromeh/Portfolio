@@ -1,6 +1,6 @@
 import './App.css'
 import AboutMe from './Component/AboutMe'
-import Contact from './Component/Contact.JSX'
+import Contact from './Component/Contact'
 import FeaturedProjects from './Component/FeaturedProjects'
 import HeroSecation from './Component/HeroSecation'
 import Navbar from './Component/Navbar'
