@@ -1,100 +1,125 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import Profile from '../assets/Romeh.jpg'
-const navigation = [
-  { name: 'About', href: '#', current: true },
-  { name: 'Skills', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Experience', href: '#', current: false },
-    { name: 'Contact', href: '#', current: false },
+import { useEffect, useState } from "react"
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@headlessui/react"
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
+import Profile from "../assets/Romeh.jpg"
 
+const navigation = [
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  { name: "Contact", href: "#contact" },
 ]
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ")
 }
 
-export default function Example() {
+export default function Navbar() {
+  const [activeSection, setActiveSection] = useState("about")
+
+  // Scroll Spy Logic
+  useEffect(() => {
+    const sections = document.querySelectorAll("section")
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      { threshold: 0.6 }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section))
+    }
+  }, [])
+
   return (
-    <Disclosure
-      as="nav"
-      className="relative  after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px "
-    >
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <Disclosure as="nav" className="fixed w-full z-50 bg-black/70 backdrop-blur-md">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="relative flex h-16 items-center justify-between">
+
+          {/* Mobile Button */}
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            {/* Mobile menu button*/}
-            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
-              <span className="absolute -inset-0.5" />
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
-              <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
+            <DisclosureButton className="inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:text-white">
+              <Bars3Icon className="block h-6 w-6 ui-open:hidden" />
+              <XMarkIcon className="hidden h-6 w-6 ui-open:block" />
             </DisclosureButton>
           </div>
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex shrink-0 items-center">
+
+          {/* Logo */}
+          <div className="flex flex-1 items-center justify-center sm:justify-start">
             <h1 className="text-2xl font-extrabold tracking-wide 
-bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
-bg-clip-text text-transparent drop-shadow-[0_2px_6px_rgba(255,215,0,0.4)]">
-  RoMeH
-</h1>
-            </div>
-            <div className="hidden sm:ml-6 sm:block">
-              <div className="flex space-x-4">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    aria-current={item.current ? 'page' : undefined}
-                    className={classNames(
-                      item.current ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white',
-                      'rounded-md px-3 py-2 text-sm font-medium',
-                    )}
-                  >
-                    {item.name}
-                  </a>
-                ))}
+              bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 
+              bg-clip-text text-transparent">
+              RoMeH
+            </h1>
+
+            {/* Desktop Menu */}
+            <div className="hidden sm:ml-10 sm:block">
+              <div className="flex space-x-6">
+                {navigation.map((item) => {
+                  const sectionId = item.href.replace("#", "")
+                  return (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className={classNames(
+                        activeSection === sectionId
+                          ? "text-yellow-400"
+                          : "text-gray-300 hover:text-white",
+                        "text-sm font-medium transition duration-300"
+                      )}
+                    >
+                      {item.name}
+                    </a>
+                  )
+                })}
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-           
 
-            {/* Profile dropdown */}
-            <Menu as="div" className="relative ml-3">
-              <MenuButton className="relative flex rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-                <span className="absolute -inset-1.5" />
-               
-                <img
-                  alt=""
-                  src={Profile}
-                  className="size-8 rounded-full bg-gray-800 outline -outline-offset-1 outline-white/10"
-                />
-              </MenuButton>
-
-           
-            </Menu>
+          {/* Profile Image */}
+          <div className="flex items-center">
+            <img
+              src={Profile}
+              alt=""
+              className="h-8 w-8 rounded-full border border-yellow-400"
+            />
           </div>
         </div>
       </div>
 
-      <DisclosurePanel className="sm:hidden">
-        <div className="space-y-1 px-2 pt-2 pb-3">
-          {navigation.map((item) => (
+      {/* Mobile Menu */}
+      <DisclosurePanel className="sm:hidden bg-black/90 px-4 pb-3">
+        {navigation.map((item) => {
+          const sectionId = item.href.replace("#", "")
+          return (
             <DisclosureButton
               key={item.name}
               as="a"
               href={item.href}
-              aria-current={item.current ? 'page' : undefined}
               className={classNames(
-                item.current ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white',
-                'block rounded-md px-3 py-2 text-base font-medium',
+                activeSection === sectionId
+                  ? "text-yellow-400"
+                  : "text-gray-300",
+                "block py-2 text-base font-medium"
               )}
             >
               {item.name}
             </DisclosureButton>
-          ))}
-        </div>
+          )
+        })}
       </DisclosurePanel>
     </Disclosure>
   )

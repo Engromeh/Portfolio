@@ -68,7 +68,7 @@ const experiences = [
 
 const WorkExperience = () => {
   return (
-    <section className=" text-white py-24 px-6 md:px-20">
+    <section className=" text-white py-24 px-6 md:px-20" id="experience">
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}

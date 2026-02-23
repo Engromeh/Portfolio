@@ -30,7 +30,7 @@ const skills = [
 ];
 export default function Skills() {
   return (
-    <div className="min-h-screen bg-black py-16 px-6">
+    <div className="min-h-screen bg-black py-16 px-6" id="skills">
       <h2 className="text-4xl font-bold text-center text-yellow-500 mb-12 glow-text">
         My Skills
       </h2>

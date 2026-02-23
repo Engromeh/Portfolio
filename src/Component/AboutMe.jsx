@@ -2,7 +2,7 @@ import React from "react";
 import Workspace from '../assets/ABOUTME.png'
 const AboutMe = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center  text-white p-8 md:p-16 gap-10">
+    <div className="flex flex-col md:flex-row items-center  text-white p-8 md:p-16 gap-10" id="about">
       
       {/* الصورة */}
       <div className="md:w-1/2">

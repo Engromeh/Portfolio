@@ -52,7 +52,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="bg-[#0d0d0d] text-white py-24 px-6 md:px-20">
+    <section className="bg-[#0d0d0d] text-white py-24 px-6 md:px-20" id="contact">
       <ToastContainer position="top-right" autoClose={4000} />
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">

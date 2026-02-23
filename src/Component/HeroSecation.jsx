@@ -3,7 +3,7 @@ import Profile from '../assets/Romeh.jpg'
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen bg-black text-white flex items-center">
+    <section className="min-h-screen bg-black text-white flex items-center" id="about">
       <div className="container mx-auto px-8 flex flex-col md:flex-row items-center justify-between">
 
         {/* Left Side */}

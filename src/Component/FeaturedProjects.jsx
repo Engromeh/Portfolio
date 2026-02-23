@@ -44,7 +44,7 @@ const projects = [
 
 export default function FeaturedProjects() {
   return (
-    <section className="bg-black py-20 px-6">
+    <section className="bg-black py-20 px-6" id="projects">
       <div className="text-center mb-14">
         <p className="text-yellow-500 tracking-widest text-sm">PORTFOLIO</p>
         <h2 className="text-4xl font-bold text-white glow-text">
